@@ -305,7 +305,7 @@
                                         unset($_SESSION['kode']);
                                     }
                                 ?>
-                                <!-- <h4>Selamat Datang <?php echo $_SESSION['nip']; ?></h4> -->
+                                
                             <label for="kode">Kode Klasifikasi</label>
                         </div>
                         <div class="input-field col s6">
