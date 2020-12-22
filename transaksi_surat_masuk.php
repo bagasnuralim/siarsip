@@ -261,8 +261,7 @@
                                 <tbody>';
 
                                 //script untuk menampilkan data
-                                
-                                $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE `status_publish` = '0' OR `status_publish` = '1' AND `nip` ='$nip_user' ORDER by id_surat DESC LIMIT $curr, $limit");
+                                $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE `status_publish` = '1' AND `nip` ='$nip_user' ORDER by id_surat DESC LIMIT $curr, $limit");
                                 if(mysqli_num_rows($query) > 0){
                                     $no = 1;
                                     while($row = mysqli_fetch_array($query)){

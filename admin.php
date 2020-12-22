@@ -138,50 +138,119 @@ Website     : https://masrud.com
                 //menghitung jumlah pengguna
                 $count5 = mysqli_num_rows(mysqli_query($config, "SELECT * FROM tbl_user"));
             ?>
-
+            <!-- table surat masuk public -->
+            <div class="col s6">
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Isi Surat</th>
+                        <th>Detail</th>
+                    </tr>
+                    </thead>
+                    <?php $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE status_publish = '0' AND tgl_diterima >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY ORDER BY tgl_surat DESC LIMIT 5");
+                    if(mysqli_num_rows($query) > 0){
+                        $no = 1;
+                        while($row = mysqli_fetch_array($query)){
+                          echo '
+                          <tbody>
+                          <tr>
+                            <td>'.$row['tgl_surat'].'</td>
+                            <td>'.substr($row['isi'],0,200).'</td>
+                            <td>
+                                <a class="btn small blue waves-effect waves-light" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">
+                                <i class="small material-icons">details</i></a>
+                            </td>
+                          </tr>
+                          </tbody>';
+                        }
+                    }else{
+                        echo '
+                        <tr>
+                            <td colspan="3">belum ada data terbaru</td>
+                        </tr>
+                        ';
+                    }
+                    ?>
+                </table><br/>
+            </div>
+            <!-- table surat keluar public -->
+            <div class="col s6">
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Isi Surat</th>
+                        <th>Detail</th>
+                    </tr>
+                    </thead>
+                    <?php $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE status_publish = '0' AND tgl_catat >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY ORDER BY tgl_catat DESC LIMIT 5");
+                    if(mysqli_num_rows($query) > 0){
+                        $no = 1;
+                        while($row = mysqli_fetch_array($query)){
+                          echo '
+                          <tbody>
+                          <tr>
+                            <td>'.$row['tgl_surat'].'</td>
+                            <td>'.substr($row['isi'],0,200).'</td>
+                            <td>
+                                <a class="btn small blue waves-effect waves-light" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">
+                                <i class="small material-icons">details</i></a>
+                            </td>
+                          </tr>
+                          </tbody>';
+                        }
+                    }else{
+                        echo '
+                        <tr>
+                            <td colspan="3">belum ada data terbaru</td>
+                        </tr>
+                        ';
+                    }
+                    ?>
+                </table><br/>
+            </div>
             <!-- Info Statistic START -->
-            <a href="?page=tsm">
-                <div class="col s12 m4">
-                    <div class="card cyan">
-                        <div class="card-content">
-                            <span class="card-title white-text"><i class="material-icons md-36">mail</i> Jumlah Surat Masuk</span>
-                            <?php echo '<h5 class="white-text link">'.$count1.' Surat Masuk</h5>'; ?>
+            <div class="col s12">
+                <a href="?page=tsm">
+                    <div class="col s12 m3">
+                        <div class="card cyan">
+                            <div class="card-content">
+                                <span class="card-title white-text" style="font-size:20px;"><i class="material-icons md-36">mail</i> Jumlah Surat Masuk</span>
+                                <?php echo '<h5 class="white-text link">'.$count1.' Surat Masuk</h5>'; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-
-            <a href="?page=tsk">
-                <div class="col s12 m4">
-                    <div class="card lime darken-1">
-                        <div class="card-content">
-                            <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Surat Keluar</span>
-                            <?php echo '<h5 class="white-text link">'.$count2.' Surat Keluar</h5>'; ?>
+                </a>
+                <a href="?page=tsk">
+                    <div class="col s12 m3">
+                        <div class="card lime darken-1">
+                            <div class="card-content">
+                                <span class="card-title white-text" style="font-size:20px;"><i class="material-icons md-36">drafts</i> Jumlah Surat Keluar</span>
+                                <?php echo '<h5 class="white-text link">'.$count2.' Surat Keluar</h5>'; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-
-            <div class="col s12 m4">
+                </a>
+            <div class="col s12 m3">
                 <div class="card yellow darken-3">
                     <div class="card-content">
-                        <span class="card-title white-text"><i class="material-icons md-36">description</i> Jumlah Disposisi</span>
+                        <span class="card-title white-text" style="font-size:20px;"><i class="material-icons md-36">description</i> Jumlah Disposisi</span>
                         <?php echo '<h5 class="white-text link">'.$count3.' Disposisi</h5>'; ?>
                     </div>
                 </div>
             </div>
-
             <a href="?page=ref">
-                <div class="col s12 m4">
+                <div class="col s12 m3">
                     <div class="card deep-orange">
                         <div class="card-content">
-                            <span class="card-title white-text"><i class="material-icons md-36">class</i> Jumlah Klasifikasi Surat</span>
+                            <span class="card-title white-text" style="font-size:18px;"><i class="material-icons md-36">class</i> Jumlah Klasifikasi Surat</span>
                             <?php echo '<h5 class="white-text link">'.$count4.' Klasifikasi Surat</h5>'; ?>
                         </div>
                     </div>
                 </div>
             </a>
-
+            </div>
         <?php
             if($_SESSION['id_user'] == 1 || $_SESSION['admin'] == 2){?>
                 <a href="?page=sett&sub=usr">
@@ -198,6 +267,7 @@ Website     : https://masrud.com
         <?php
             }
         ?>
+
 
         </div>
         <!-- Row END -->

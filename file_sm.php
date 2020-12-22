@@ -95,6 +95,11 @@
                                                         <div class="card-action">
                                                             <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_masuk/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
                                                         </div>
+                                                        <div class="card-action">
+                                                            <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="650" height="200">
+                                                                <a href="./upload/surat_masuk/'.$row['file'].'">'.$row['file'].'</a>
+                                                            </object>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -115,7 +120,12 @@
                                                             <p>File lampiran surat masuk ini bertipe <strong>PDF</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
                                                         </div>
                                                         <div class="card-action">
-                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_masuk/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                            <strong>Download file :</strong> <a class="blue-text" href="./upload/surat_masuk/'.$row['file'].'" target="_blank">'.$row['file'].'</a><br/>
+                                                        </div>
+                                                        <div class="card-action">
+                                                            <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="650" height="200">
+                                                                <a href="./upload/surat_masuk/'.$row['file'].'">'.$row['file'].'</a>
+                                                            </object>
                                                         </div>
                                                     </div>
                                                 </div>

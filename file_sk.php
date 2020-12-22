@@ -91,6 +91,11 @@
                                                         <div class="card-action">
                                                             <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
                                                         </div>
+                                                        <div class="card-action">
+                                                            <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="650" height="200">
+                                                                <a href="./upload/surat_keluar/'.$row['file'].'">'.$row['file'].'</a>
+                                                            </object>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -112,6 +117,11 @@
                                                         </div>
                                                         <div class="card-action">
                                                             <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                        </div>
+                                                        <div class="card-action">
+                                                            <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="650" height="200">
+                                                                <a href="./upload/surat_keluar/'.$row['file'].'">'.$row['file'].'</a>
+                                                            </object>
                                                         </div>
                                                     </div>
                                                 </div>

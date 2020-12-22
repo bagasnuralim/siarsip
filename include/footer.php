@@ -31,8 +31,12 @@
 <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="asset/js/jquery.autocomplete.min.js"></script>
 <script data-pace-options='{ "ajax": false }' src='asset/js/pace.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
+    //detail surat public
+    
     //jquery dropdown
     $(".dropdown-button").dropdown({ hover: false });
 
@@ -90,6 +94,10 @@ $(document).ready(function(){
     //jquery modal
     $('.modal-trigger').leanModal();
  });
+function detailsm()
+{
+    Swal.fire('Any fool can use a computer')
+}
 
 </script>
 <!-- Javascript END -->
