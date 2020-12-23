@@ -93,7 +93,9 @@ $(document).ready(function(){
 
     //jquery modal
     $('.modal-trigger').leanModal();
+
  });
+
 function detailsm()
 {
     Swal.fire('Any fool can use a computer')

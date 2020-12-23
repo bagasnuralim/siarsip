@@ -158,8 +158,18 @@ Website     : https://masrud.com
                             <td>'.$row['tgl_surat'].'</td>
                             <td>'.substr($row['isi'],0,200).'</td>
                             <td>
-                                <a class="btn small blue waves-effect waves-light" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">
-                                <i class="small material-icons">details</i></a>
+                            <!-- Modal Trigger -->
+                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="small material-icons">details</i></a>
+                            <!-- Modal Structure -->
+                                <div id="modal1" class="modal">
+                                    <div class="modal-content">
+                                        <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                        </object>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </td>
                           </tr>
                           </tbody>';
@@ -194,8 +204,18 @@ Website     : https://masrud.com
                             <td>'.$row['tgl_surat'].'</td>
                             <td>'.substr($row['isi'],0,200).'</td>
                             <td>
-                                <a class="btn small blue waves-effect waves-light" href="?page=gsk&act=fsk&id_surat='.$row['id_surat'].'">
-                                <i class="small material-icons">details</i></a>
+                            <!-- Modal Trigger -->
+                                <a class="waves-effect waves-light btn modal-trigger" href="#modal2"><i class="small material-icons">details</i></a>
+                            <!-- Modal Structure -->
+                                <div id="modal2" class="modal">
+                                    <div class="modal-content">
+                                        <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                        </object>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
                             </td>
                           </tr>
                           </tbody>';
@@ -208,7 +228,8 @@ Website     : https://masrud.com
                         ';
                     }
                     ?>
-                </table><br/>
+                </table>
+                <br/>
             </div>
             <!-- Info Statistic START -->
             <div class="col s12">

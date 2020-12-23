@@ -100,6 +100,9 @@
                                                                 <a href="./upload/surat_masuk/'.$row['file'].'">'.$row['file'].'</a>
                                                             </object>
                                                         </div>
+                                                        <div class="card-action">
+                                                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -126,6 +129,18 @@
                                                             <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="650" height="200">
                                                                 <a href="./upload/surat_masuk/'.$row['file'].'">'.$row['file'].'</a>
                                                             </object>
+                                                        </div>
+                                                        <div class="card-action">
+                                                            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+                                                        </div>
+                                                        <div id="modal1" class="modal" style="width:75%; height:100%">
+                                                            <div class="modal-content" >
+                                                                <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                                                </object>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
