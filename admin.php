@@ -150,29 +150,30 @@ Website     : https://masrud.com
                     </thead>
                     <?php $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE status_publish = '0' AND tgl_diterima >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY ORDER BY tgl_surat DESC LIMIT 5");
                     if(mysqli_num_rows($query) > 0){
-                        $no = 1;
+                        $no = 0;
                         while($row = mysqli_fetch_array($query)){
-                          echo '
+                        $no++;
+                        ?>
                           <tbody>
                           <tr>
-                            <td>'.$row['tgl_surat'].'</td>
-                            <td>'.substr($row['isi'],0,200).'</td>
+                            <td><?=$row['tgl_surat']?></td>
+                            <td><?=substr($row['isi'],0,200)?></td>
                             <td>
-                            <!-- Modal Trigger -->
-                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="small material-icons">details</i></a>
-                            <!-- Modal Structure -->
-                                <div id="modal1" class="modal">
+                                <a class="waves-effect waves-light btn modal-trigger" href="#modal<?=$no?>"><i class="small material-icons">details</i></a>
+                                <div id="modal<?=$no?>" class="modal" style="width:70%; height:100%;">
                                     <div class="modal-content">
-                                        <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                        <object data="./upload/surat_masuk/<?=$row['file']?>" type="application/pdf" width="100%" height="355px">
                                         </object>
+
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                                     </div>
-                                </div>
+                                </div> 
                             </td>
                           </tr>
-                          </tbody>';
+                          </tbody>
+                        <?php
                         }
                     }else{
                         echo '
@@ -196,21 +197,20 @@ Website     : https://masrud.com
                     </thead>
                     <?php $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE status_publish = '0' AND tgl_catat >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY ORDER BY tgl_catat DESC LIMIT 5");
                     if(mysqli_num_rows($query) > 0){
-                        $no = 1;
+                        $no = 5;
                         while($row = mysqli_fetch_array($query)){
-                          echo '
+                        $no++; ?>
                           <tbody>
                           <tr>
-                            <td>'.$row['tgl_surat'].'</td>
-                            <td>'.substr($row['isi'],0,200).'</td>
+                            <td><?=$row['tgl_surat']?></td>
+                            <td><?=substr($row['isi'],0,200)?></td>
                             <td>
-                            <!-- Modal Trigger -->
-                                <a class="waves-effect waves-light btn modal-trigger" href="#modal2"><i class="small material-icons">details</i></a>
-                            <!-- Modal Structure -->
-                                <div id="modal2" class="modal">
+                            <a class="waves-effect waves-light btn modal-trigger" href="#modal<?=$no?>"><i class="small material-icons">details</i></a>
+                                <div id="modal<?=$no?>" class="modal" style="width:70%; height:100%;">
                                     <div class="modal-content">
-                                        <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                        <object data="./upload/surat_keluar/<?=$row['file']?>" type="application/pdf" width="100%" height="355px">
                                         </object>
+
                                     </div>
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
@@ -218,7 +218,8 @@ Website     : https://masrud.com
                                 </div>
                             </td>
                           </tr>
-                          </tbody>';
+                          </tbody>
+                        <?php
                         }
                     }else{
                         echo '
