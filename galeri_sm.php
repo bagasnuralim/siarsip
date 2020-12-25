@@ -92,7 +92,9 @@
                             </div>';
 
                             if(mysqli_num_rows($query) > 0){
+                                $no=0;
                                 while($row = mysqli_fetch_array($query)){
+                                $no++;
                                 if(empty($row['file'])){
                                     echo '';
                                 } else {
@@ -114,14 +116,45 @@
                                         if(in_array($eks, $ekstensi2) == true){
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <div class="card small" style="height:200px;">
+                                                        <div class="card-content">
+                                                            <a class="waves-effect waves-light modal-trigger blue-text" href="#modal'.$no.'"><i class="large material-icons">picture_as_pdf</i> Preview</a>
+                                                        </div>
+                                                        <div class="card-action">
+                                                        <a href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="modal'.$no.'" class="modal" style="width:75%; height:100%">
+                                                        <div class="modal-content">
+                                                            <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                                            </object>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                        </div>
+                                                    </div>
                                                 </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <div class="card small" style="height:200px;">
+                                                        <div class="card-content">
+                                                            <a class="waves-effect waves-light modal-trigger blue-text" href="#modal'.$no.'"><i class="large material-icons">picture_as_pdf</i> Preview</a>
+                                                        </div>
+                                                        <div class="card-action">
+                                                        <a href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="modal'.$no.'" class="modal" style="width:75%; height:100%">
+                                                        <div class="modal-content">
+                                                            <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                                            </object>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                        </div>
+                                                    </div>
                                                 </div>';
                                         }
                                     }
@@ -164,9 +197,9 @@
                                 </form>
                             </div>
                             <!-- Row form END -->';
-
+                            $no=0;
                             while($row = mysqli_fetch_array($query)){
-
+                            $no++;
                                 if(empty($row['file'])){
                                     echo '';
                                 } else {
@@ -188,14 +221,44 @@
                                         if(in_array($eks, $ekstensi2) == true){
                                         echo '
                                             <div class="col m3">
-                                                <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/word.png"/>
-                                                <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                <div class="card small" style="height:200px;">
+                                                    <div class="card-content">
+                                                        <a class="waves-effect waves-light modal-trigger blue-text" href="#modal'.$no.'"><i class="large material-icons">picture_as_pdf</i> Preview</a>
+                                                    </div>
+                                                    <div class="card-action">
+                                                    <a href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    </div>
+                                                </div>
+                                                <div id="modal'.$no.'" class="modal" style="width:75%; height:100%">
+                                                    <div class="modal-content">
+                                                        <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                                        </object>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                    </div>
+                                                </div>
                                             </div>';
                                         } else {
                                             echo '
                                                 <div class="col m3">
-                                                    <img class="galeri materialboxed" data-caption="'.indoDate($row['tgl_diterima']).'" src="./asset/img/pdf.png"/>
-                                                    <a class="btn light-green darken-1" href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                    <div class="card small" style="height:200px;">
+                                                        <div class="card-content">
+                                                            <a class="waves-effect waves-light modal-trigger blue-text" href="#modal'.$no.'"><i class="large material-icons">picture_as_pdf</i> Preview</a>
+                                                        </div>
+                                                        <div class="card-action">
+                                                        <a href="?page=gsm&act=fsm&id_surat='.$row['id_surat'].'">Lihat Detail File</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="modal'.$no.'" class="modal" style="width:75%; height:100%">
+                                                        <div class="modal-content">
+                                                            <object data="./upload/surat_masuk/'.$row['file'].'" type="application/pdf" width="100%" height="355px">
+                                                            </object>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                        </div>
+                                                    </div>
                                                 </div>';
                                         }
                                     }

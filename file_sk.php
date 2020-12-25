@@ -10,7 +10,7 @@
         $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar WHERE id_surat='$id_surat'");
         if(mysqli_num_rows($query) > 0){
             while($row = mysqli_fetch_array($query)){
-                echo '
+                ?>
                     <div class="row jarak-form">
                         <ul class="collapsible white" data-collapsible="accordion">
                             <li>
@@ -22,37 +22,37 @@
                                                     <tr>
                                                         <td width="13%">No. Agenda</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['no_agenda'].'</td>
+                                                        <td width="86%"><?=$row['no_agenda']?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="13%">Kode Klasifikasi</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['kode'].'</td>
+                                                        <td width="86%"><?=$row['kode']?></td>
                                                     </tr>
                                                     </tr>
                                                     <tr>
                                                     <td width="13%">Isi Ringkas</td>
                                                     <td width="1%">:</td>
-                                                    <td width="86%">'.$row['isi'].'</td>
+                                                    <td width="86%"><?=$row['isi']?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="13%">Tujuan Surat</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['tujuan'].'</td>
+                                                        <td width="86%"><?=$row['tujuan']?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="13%">No. Surat</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['no_surat'].'</td>
+                                                        <td width="86%"><?=$row['no_surat']?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="13%">Tanggal Surat</td>
-                                                        <td width="1%">:</td><td width="86%">'.indoDate($row['tgl_surat']).'</td>
+                                                        <td width="1%">:</td><td width="86%"><?=indoDate($row['tgl_surat'])?></td>
                                                     </tr>
                                                     <tr>
                                                         <td width="13%">Keterangan</td>
                                                         <td width="1%">:</td>
-                                                        <td width="86%">'.$row['keterangan'].'</td>
+                                                        <td width="86%"><?=$row['keterangan']?></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -63,7 +63,7 @@
                         </ul>
 
                         <button onclick="window.history.back()" class="btn-large blue waves-effect waves-light left"><i class="material-icons">arrow_back</i> KEMBALI</button>';
-
+                        <?php
                         if(empty($row['file'])){
                             echo '';
                         } else {
@@ -79,22 +79,23 @@
                             } else {
 
                                 if(in_array($eks, $ekstensi2) == true){
-                                    echo '
+                                    ?>
                                     <div class="gbr">
                                         <div class="row">
                                             <div class="col s12">
                                                 <div class="col s9 left">
                                                     <div class="card">
-                                                        <div class="card-content">
-                                                            <p>File lampiran surat keluar ini bertipe <strong>document</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
-                                                        </div>
                                                         <div class="card-action">
-                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                            <strong>Lihat file :</strong> <a class="waves-effect waves-light modal-trigger blue-text" href="#modal1"><?=$row['file']?></a><br/>
                                                         </div>
-                                                        <div class="card-action">
-                                                            <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="650" height="200">
-                                                                <a href="./upload/surat_keluar/'.$row['file'].'">'.$row['file'].'</a>
-                                                            </object>
+                                                        <div id="modal1" class="modal" style="width:75%; height:100%">
+                                                            <div class="modal-content" >
+                                                                <object data="./upload/surat_keluar/<?=$row['file']?>" type="application/pdf" width="100%" height="355px">
+                                                                </object>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -104,24 +105,26 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>';
+                                    </div>
+                                <?php
                                 } else {
-                                    echo '
+                                    ?>
                                     <div class="gbr">
                                         <div class="row">
                                             <div class="col s12">
                                                 <div class="col s9 left">
                                                     <div class="card">
-                                                        <div class="card-content">
-                                                            <p>File lampiran surat keluar ini bertipe <strong>PDF</strong>, silakan klik link dibawah ini untuk melihat file lampiran tersebut.</p>
-                                                        </div>
                                                         <div class="card-action">
-                                                            <strong>Lihat file :</strong> <a class="blue-text" href="./upload/surat_keluar/'.$row['file'].'" target="_blank">'.$row['file'].'</a>
+                                                            <strong>Lihat file :</strong> <a class="waves-effect waves-light modal-trigger blue-text" href="#modal1"><?=$row['file']?></a><br/>
                                                         </div>
-                                                        <div class="card-action">
-                                                            <object data="./upload/surat_keluar/'.$row['file'].'" type="application/pdf" width="650" height="200">
-                                                                <a href="./upload/surat_keluar/'.$row['file'].'">'.$row['file'].'</a>
-                                                            </object>
+                                                        <div id="modal1" class="modal" style="width:75%; height:100%">
+                                                            <div class="modal-content" >
+                                                                <object data="./upload/surat_keluar/<?=$row['file']?>" type="application/pdf" width="100%" height="355px">
+                                                                </object>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,7 +134,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>';
+                                    </div>
+                                <?php
                                 }
                             }
                         } echo '
